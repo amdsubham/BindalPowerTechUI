@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Additional imports
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,13 @@ function Illustration() {
   const navigate = useNavigate();
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  useEffect(() => {
+    // Remove specific local storage item on component mount
+    localStorage.removeItem('token');
+    // Or clear entire local storage if that's the intention
+    // localStorage.clear();
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 
 // react-router components
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 // @mui material components
 import { ThemeProvider } from "@mui/material/styles";
@@ -39,6 +39,7 @@ import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 
 export default function App() {
+  const navigate = useNavigate();
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -63,6 +64,19 @@ export default function App() {
 
     setRtlCache(cacheRtl);
   }, []);
+
+
+  useEffect(() => {
+    // Check if a specific local storage item exists
+    const token = localStorage.getItem('token');
+    if (token) {
+      // If the token exists, navigate to /dashboards/manageproducts
+      navigate('/dashboards/manageproducts');
+    } else {
+      // If the token doesn't exist, navigate to /authentication/sign-in/basic
+      navigate('/authentication/sign-in/basic');
+    }
+  }, [navigate]);
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
@@ -96,7 +110,6 @@ export default function App() {
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
-      console.log("route", route)
       if (route.collapse) {
         return getRoutes(route.collapse);
       }
