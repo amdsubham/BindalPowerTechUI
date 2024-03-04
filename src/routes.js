@@ -83,9 +83,9 @@ import Icon from "@mui/material/Icon";
 const routes = [
   {
     type: "collapse",
-    name: "Subham Routray",
+    name: "Admin",
     key: "brooklyn-alice",
-    icon: <MDAvatar alt="Subham Routray" size="sm" />,
+    icon: <MDAvatar alt="Admin" size="sm" />,
     collapse: [
       // {
       //   name: "My Profile",
