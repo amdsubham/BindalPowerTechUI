@@ -66,14 +66,12 @@ export default function App() {
   }, []);
 
 
+
   useEffect(() => {
     // Check if a specific local storage item exists
     const token = localStorage.getItem('token');
-    if (token) {
+    if (!token) {
       // If the token exists, navigate to /dashboards/manageproducts
-      navigate('/dashboards/manageproducts');
-    } else {
-      // If the token doesn't exist, navigate to /authentication/sign-in/basic
       navigate('/authentication/sign-in/basic');
     }
   }, [navigate]);
