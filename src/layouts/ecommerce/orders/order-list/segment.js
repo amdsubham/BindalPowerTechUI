@@ -38,7 +38,7 @@ function SegmentList() {
   const fetchSegments = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://31.220.21.195:3800/api/segments"); // Adjust API endpoint as necessary
+      const response = await axios.get("https://bindaladmin.fruitnasta.com/api/segments"); // Adjust API endpoint as necessary
       setSegments(response.data);
     } catch (error) {
       console.error("Failed to fetch segments:", error);
@@ -70,7 +70,7 @@ function SegmentList() {
   const handleDeleteSegment = async () => {
     if (selectedSegment && selectedSegment._id) {
       try {
-        await axios.delete(`http://31.220.21.195:3800/api/segments/${selectedSegment._id}`);
+        await axios.delete(`https://bindaladmin.fruitnasta.com/api/segments/${selectedSegment._id}`);
         fetchSegments(); // Refresh the list after deletion
         setDeleteDialogOpen(false);
       } catch (error) {

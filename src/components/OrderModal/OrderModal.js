@@ -41,17 +41,17 @@ const OrderModal = ({ open, onClose, refreshOrders, products, mode, orderId, sel
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoriesResponse = await axios.get('http://31.220.21.195:3800/api/categories');
+        const categoriesResponse = await axios.get('https://bindaladmin.fruitnasta.com/api/categories');
         const fetchedCategories = categoriesResponse.data;
         setCategories(fetchedCategories);
 
-        const distributorsResponse = await axios.get('http://31.220.21.195:3800/api/distributors');
+        const distributorsResponse = await axios.get('https://bindaladmin.fruitnasta.com/api/distributors');
         setDistributors(distributorsResponse.data);
 
-        const segmentsResponse = await axios.get('http://31.220.21.195:3800/api/segments');
+        const segmentsResponse = await axios.get('https://bindaladmin.fruitnasta.com/api/segments');
         setSegments(segmentsResponse.data);
 
-        const variantsResponse = await axios.get('http://31.220.21.195:3800/api/variants');
+        const variantsResponse = await axios.get('https://bindaladmin.fruitnasta.com/api/variants');
         setVariants(variantsResponse.data);
 
         setIsLoading(false);
@@ -70,7 +70,7 @@ const OrderModal = ({ open, onClose, refreshOrders, products, mode, orderId, sel
       if (selectedVariant) {
         try {
           // Fetch all products
-          const productsResponse = await axios.get(`http://31.220.21.195:3800/api/products?variant=${selectedVariant._id}`);
+          const productsResponse = await axios.get(`https://bindaladmin.fruitnasta.com/api/products?variant=${selectedVariant._id}`);
           // Filter in-stock products
           const inStockProducts = productsResponse.data.filter(product => product.status === 'InStock' && product.modelNumber === selectedVariant.modelNumber);
 
@@ -192,16 +192,16 @@ const OrderModal = ({ open, onClose, refreshOrders, products, mode, orderId, sel
 
       if (orderId) {
         // If orderId exists in values, it means we are updating an existing order
-        const response = await axios.put(`http://31.220.21.195:3800/api/orders/${orderId}`, orderData);
+        const response = await axios.put(`https://bindaladmin.fruitnasta.com/api/orders/${orderId}`, orderData);
         console.log('Order updated successfully:', response.data);
       } else {
         // If orderId doesn't exist, it means we are creating a new order
-        const response = await axios.post('http://31.220.21.195:3800/api/orders', orderData);
+        const response = await axios.post('https://bindaladmin.fruitnasta.com/api/orders', orderData);
         console.log('Order submitted successfully:', response.data);
       }
       const selectedSerialNumbers = serialNumbers.split(',').map(serialNumber => serialNumber.trim());
       await Promise.all(selectedSerialNumbers.map(async (serialNumber) => {
-        await axios.put(`http://31.220.21.195:3800/api/products/update/${serialNumber}`, { status: 'Allocated' });
+        await axios.put(`https://bindaladmin.fruitnasta.com/api/products/update/${serialNumber}`, { status: 'Allocated' });
       }));
 
       refreshOrders();

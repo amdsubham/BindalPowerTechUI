@@ -38,7 +38,7 @@ function DistributorList() {
   const fetchDistributors = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://31.220.21.195:3800/api/distributors');
+      const response = await axios.get('https://bindaladmin.fruitnasta.com/api/distributors');
       setDistributors(response.data);
     } catch (error) {
       console.error("Failed to fetch distributors:", error);
@@ -86,7 +86,7 @@ function DistributorList() {
   const handleDeleteDistributor = () => {
     if (selectedDistributor && selectedDistributor._id) {
       setIsLoading(true);
-      axios.delete(`http://31.220.21.195:3800/api/distributors/${selectedDistributor._id}`)
+      axios.delete(`https://bindaladmin.fruitnasta.com/api/distributors/${selectedDistributor._id}`)
         .then(() => {
           setDeleteDialogOpen(false);
           fetchDistributors();
