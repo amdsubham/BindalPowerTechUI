@@ -70,11 +70,12 @@ export default function App() {
   useEffect(() => {
     // Check if a specific local storage item exists
     const token = localStorage.getItem('token');
+    console.log("token", token)
     if (!token) {
       // If the token exists, navigate to /dashboards/manageproducts
       navigate('/authentication/sign-in/basic');
     }
-  }, [navigate]);
+  }, []);
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
@@ -188,7 +189,7 @@ export default function App() {
       {/* {layout === "vr" && <Configurator />} */}
       <Routes>
         {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/authentication/sign-in/basic" />} />
+        <Route path="*" element={<Navigate to="/dashboards/manageproducts" />} />
       </Routes>
     </ThemeProvider>
   );
