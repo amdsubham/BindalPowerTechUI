@@ -30,7 +30,7 @@ function Illustration() {
     setIsLoading(true); // Start loading
 
     try {
-      const response = await fetch('http://localhost:3800/api/auth/admin/login', {
+      const response = await fetch('http://31.220.21.195:3800/api/auth/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,10 +42,8 @@ function Illustration() {
       });
 
       setIsLoading(false); // Stop loading
-      console.log("response", response)
       if (response.ok) {
         const data = await response.json();
-        console.log('Login successful:', data);
         localStorage.setItem('token', data.token);
         navigate('/dashboard');
       } else {

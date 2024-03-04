@@ -37,7 +37,7 @@ function OrderList() {
   const fetchOrders = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:3800/api/orders');
+      const response = await axios.get('http://31.220.21.195:3800/api/orders');
       setOrders(response.data);
     } catch (error) {
       console.error("Failed to fetch orders:", error);
@@ -86,7 +86,7 @@ function OrderList() {
   const handleDeleteOrder = () => {
     if (selectedOrder && selectedOrder._id) {
       setIsLoading(true);
-      axios.delete(`http://localhost:3800/api/orders/${selectedOrder._id}`)
+      axios.delete(`http://31.220.21.195:3800/api/orders/${selectedOrder._id}`)
         .then(() => {
           setDeleteDialogOpen(false);
           fetchOrders();

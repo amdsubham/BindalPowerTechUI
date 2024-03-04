@@ -14,7 +14,7 @@ import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
 import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
 import Footer from 'examples/Footer';
 
-const baseURL = 'http://localhost:3800/api'; // Adjust this as necessary
+const baseURL = 'http://31.220.21.195:3800/api'; // Adjust this as necessary
 
 function ServiceRequestList() {
   const [serviceRequests, setServiceRequests] = useState([]);

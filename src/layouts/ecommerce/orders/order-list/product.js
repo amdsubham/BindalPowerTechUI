@@ -13,9 +13,9 @@ import Footer from "examples/Footer"; // Adjust path as needed
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const baseURL = "http://localhost:3800/api/products";
-const variantsURL = "http://localhost:3800/api/variants"; // Assuming you have a similar endpoint for variants
-const segmentsURL = "http://localhost:3800/api/segments";
+const baseURL = "http://31.220.21.195:3800/api/products";
+const variantsURL = "http://31.220.21.195:3800/api/variants"; // Assuming you have a similar endpoint for variants
+const segmentsURL = "http://31.220.21.195:3800/api/segments";
 
 function ProductList() {
   const [products, setProducts] = useState([]);

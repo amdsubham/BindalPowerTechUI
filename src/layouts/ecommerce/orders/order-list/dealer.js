@@ -20,7 +20,7 @@ function DealerList(val) {
   const fetchDealers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3800/api/dealers`);
+      const response = await axios.get(`http://31.220.21.195:3800/api/dealers`);
       setDealers(response.data);
     } catch (error) {
       console.error("Failed to fetch dealers:", error);

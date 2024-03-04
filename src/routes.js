@@ -80,28 +80,25 @@ import MDAvatar from "components/MDAvatar";
 // @mui icons
 import Icon from "@mui/material/Icon";
 
-// Images
-import profilePicture from "assets/images/team-3.jpg";
-
 const routes = [
   {
     type: "collapse",
     name: "Subham Routray",
     key: "brooklyn-alice",
-    icon: <MDAvatar src={profilePicture} alt="Subham Routray" size="sm" />,
+    icon: <MDAvatar alt="Subham Routray" size="sm" />,
     collapse: [
-      {
-        name: "My Profile",
-        key: "my-profile",
-        route: "/pages/profile/profile-overview",
-        component: <ProfileOverview />,
-      },
-      {
-        name: "Settings",
-        key: "profile-settings",
-        route: "/pages/account/settings",
-        component: <Settings />,
-      },
+      // {
+      //   name: "My Profile",
+      //   key: "my-profile",
+      //   route: "/pages/profile/profile-overview",
+      //   component: <ProfileOverview />,
+      // },
+      // {
+      //   name: "Settings",
+      //   key: "profile-settings",
+      //   route: "/pages/account/settings",
+      //   component: <Settings />,
+      // },
       {
         name: "Logout",
         key: "logout",
