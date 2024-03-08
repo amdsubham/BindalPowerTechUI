@@ -7,15 +7,17 @@ import DataTable from "examples/Tables/DataTable";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+import { useParams } from "react-router-dom";
 
 function CustomerList({ match }) {
+  const { dealerId } = useParams();
   const [customers, setCustomers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchCustomers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`https://bindaladmin.fruitnasta.com/api/dealers/${match.params.dealerId}/customers`);
+      const response = await axios.get(`https://devbindaladmin.fruitnasta.com/api/customers/${dealerId}/dealer`);
       setCustomers(response.data);
     } catch (error) {
       console.error("Failed to fetch customers:", error);
@@ -33,12 +35,12 @@ function CustomerList({ match }) {
       { Header: "Email", accessor: "email" },
       { Header: "Contact Number", accessor: "contactNumber" },
       { Header: "Address", accessor: "address" },
-      { Header: "Purchase Date", accessor: "purchaseDate" },
-      { Header: "Warranty End", accessor: "warrantyEnd" },
+      // { Header: "Purchase Date", accessor: "purchaseDate" },
+      // { Header: "Warranty End", accessor: "warrantyEnd" },
     ],
     rows: customers.map((customer) => ({
       ...customer,
-      purchaseDate: new Date(customer.purchaseDate).toLocaleDateString(),
+      purchaseDate: customer.creat ? new Date(customer.purchaseDate).toLocaleDateString() : "N/A",
       warrantyEnd: customer.warrantyEnd ? new Date(customer.warrantyEnd).toLocaleDateString() : "N/A",
     })),
   };

@@ -37,7 +37,7 @@ function OrderList() {
   const fetchOrders = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://bindaladmin.fruitnasta.com/api/orders');
+      const response = await axios.get('https://devbindaladmin.fruitnasta.com/api/orders');
       setOrders(response.data);
     } catch (error) {
       console.error("Failed to fetch orders:", error);
@@ -86,7 +86,7 @@ function OrderList() {
   const handleDeleteOrder = () => {
     if (selectedOrder && selectedOrder._id) {
       setIsLoading(true);
-      axios.delete(`https://bindaladmin.fruitnasta.com/api/orders/${selectedOrder._id}`)
+      axios.delete(`https://devbindaladmin.fruitnasta.com/api/orders/${selectedOrder._id}`)
         .then(() => {
           setDeleteDialogOpen(false);
           fetchOrders();

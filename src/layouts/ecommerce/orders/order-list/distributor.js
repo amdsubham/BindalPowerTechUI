@@ -38,7 +38,7 @@ function DistributorList() {
   const fetchDistributors = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://bindaladmin.fruitnasta.com/api/distributors');
+      const response = await axios.get('https://devbindaladmin.fruitnasta.com/api/distributors');
       setDistributors(response.data);
     } catch (error) {
       console.error("Failed to fetch distributors:", error);
@@ -56,8 +56,8 @@ function DistributorList() {
     handleCloseMenu();
   };
 
-  const handleDistributorClick = (distributorId) => {
-    history.push(`/dealers/${distributorId}`);
+  const handleDistributorClick = (distributorId, distributorName) => {
+    history.push(`/dealers/${distributorId}/${distributorName}`);
   };
 
   const handleOpenMenu = (event, distributor) => {
@@ -86,7 +86,7 @@ function DistributorList() {
   const handleDeleteDistributor = () => {
     if (selectedDistributor && selectedDistributor._id) {
       setIsLoading(true);
-      axios.delete(`https://bindaladmin.fruitnasta.com/api/distributors/${selectedDistributor._id}`)
+      axios.delete(`https://devbindaladmin.fruitnasta.com/api/distributors/${selectedDistributor._id}`)
         .then(() => {
           setDeleteDialogOpen(false);
           fetchDistributors();
@@ -176,7 +176,7 @@ function DistributorList() {
             <>
               <DataTable
                 table={dataTableData} entriesPerPage={false} canSearch
-                onRowClick={(row) => handleDistributorClick(row.original._id)}
+                onRowClick={(row) => handleDistributorClick(row.original._id, row.original.name)}
               />
               <Menu
                 anchorEl={anchorEl}

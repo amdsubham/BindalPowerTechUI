@@ -10,17 +10,16 @@ import Footer from "examples/Footer";
 import IconButton from '@mui/material/IconButton';
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Link } from "react-router-dom";
-
-function DealerList(val) {
-  console.log("valval", val)
-  const { match } = val
+import { useParams } from "react-router-dom";
+function DealerList() {
+  const { distributorId } = useParams();
   const [dealers, setDealers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchDealers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`https://bindaladmin.fruitnasta.com/api/dealers`);
+      const response = await axios.get(`https://devbindaladmin.fruitnasta.com/api/dealers/${distributorId}/dealers`);
       setDealers(response.data);
     } catch (error) {
       console.error("Failed to fetch dealers:", error);

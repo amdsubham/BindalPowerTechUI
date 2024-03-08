@@ -7,7 +7,7 @@ import { BrowserBarcodeReader } from '@zxing/library';
 import ScannerIcon from '@mui/icons-material/Scanner'; // Import icon for scanner
 
 const AddProduct = () => {
-    const apiURL = 'https://bindaladmin.fruitnasta.com/api/products';
+    const apiURL = 'https://devbindaladmin.fruitnasta.com/api/products';
 
     const [scannerActive, setScannerActive] = useState(false);
     const [matchingVariant, setMatchingVariant] = useState(null); // Initialize with null
@@ -25,9 +25,9 @@ const AddProduct = () => {
     useEffect(() => {
         const fetchVariantsAndSegments = async () => {
             try {
-                const variantsResponse = await axios.get('https://bindaladmin.fruitnasta.com/api/variants');
+                const variantsResponse = await axios.get('https://devbindaladmin.fruitnasta.com/api/variants');
                 setVariants(variantsResponse.data);
-                const segmentsResponse = await axios.get('https://bindaladmin.fruitnasta.com/api/segments');
+                const segmentsResponse = await axios.get('https://devbindaladmin.fruitnasta.com/api/segments');
                 setSegments(segmentsResponse.data);
             } catch (error) {
                 console.error('Error fetching variants and segments:', error);
@@ -81,7 +81,7 @@ const AddProduct = () => {
                 const matchingVariant = variants.find(variant => variant.modelNumber === modelNumber);
                 if (matchingVariant) {
                     setMatchingVariant(matchingVariant)
-                    const matchingSegment = segments.find(segment => segment.id === matchingVariant.segmentId)?.name || '';
+                    const matchingSegment = segments.find(segment => segment._id === matchingVariant.segment)?.name || '';
                     formikRef.current.setValues({
                         modelNumber,
                         serialNumber,

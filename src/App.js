@@ -70,7 +70,6 @@ export default function App() {
   useEffect(() => {
     // Check if a specific local storage item exists
     const token = localStorage.getItem('token');
-    console.log("token", token)
     if (!token) {
       // If the token exists, navigate to /dashboards/manageproducts
       navigate('/authentication/sign-in/basic');

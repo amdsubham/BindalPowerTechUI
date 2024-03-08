@@ -17,7 +17,7 @@ const ProductModal = ({ open, onClose, product, refreshProducts, variants, segme
     const formikRef = useRef();
 
     // API endpoint URL
-    const apiURL = product ? `https://bindaladmin.fruitnasta.com/api/products/${product._id}` : 'https://bindaladmin.fruitnasta.com/api/products';
+    const apiURL = product ? `https://devbindaladmin.fruitnasta.com/api/products/${product._id}` : 'https://devbindaladmin.fruitnasta.com/api/products';
 
     const initialValues = {
         modelNumber: '',
@@ -57,6 +57,8 @@ const ProductModal = ({ open, onClose, product, refreshProducts, variants, segme
     };
 
     useEffect(() => {
+        console.log("fsdfsdfdsfdfs")
+
         if (!scannerActive || !hasPermission) return;
 
         const codeReader = new BrowserBarcodeReader();
@@ -66,7 +68,7 @@ const ProductModal = ({ open, onClose, product, refreshProducts, variants, segme
                 const matchingVariant = variants.find(variant => variant.modelNumber === modelNumber);
                 if (matchingVariant) {
                     setMatchingVariant(matchingVariant)
-                    const matchingSegment = segments.find(segment => segment.id === matchingVariant.segmentId)?.name || '';
+                    const matchingSegment = segments.find(segment => segment._id === matchingVariant.segment)?.name || '';
                     formikRef.current.setValues({
                         modelNumber,
                         serialNumber,
