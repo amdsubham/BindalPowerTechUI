@@ -22,7 +22,7 @@ const ServiceRequestModal = ({ open, onClose, mode, serviceRequestId, refreshSer
   useEffect(() => {
     if (mode !== 'add' && serviceRequestId) {
       setIsLoading(true);
-      axios.get(`https://devbindaladmin.fruitnasta.com/api/service-requests/${serviceRequestId}`)
+      axios.get(`https://api.bindaladmin.com/api/service-requests/${serviceRequestId}`)
         .then((response) => {
           const { status, serviceType, productSerialNumber } = response.data.data;
           setSelectedServiceRequest(response.data.data)
@@ -46,15 +46,15 @@ const ServiceRequestModal = ({ open, onClose, mode, serviceRequestId, refreshSer
     try {
       let response;
       if (mode === 'add') {
-        response = await axios.post('https://devbindaladmin.fruitnasta.com/api/service-requests', payload);
+        response = await axios.post('https://api.bindaladmin.com/api/service-requests', payload);
       } else if (mode === 'edit') {
-        response = await axios.put(`https://devbindaladmin.fruitnasta.com/api/service-requests/${serviceRequestId}`, payload);
+        response = await axios.put(`https://api.bindaladmin.com/api/service-requests/${serviceRequestId}`, payload);
       }
 
       // Update status and allocate new product serial number if needed
       if (values.status === 'Completed' && selectedServiceRequest.productSerialNumber && values.newProductSerialNumber) {
-        await axios.put(`https://devbindaladmin.fruitnasta.com/api/products/update/${selectedServiceRequest.productSerialNumber}`, { status: 'Discontinued' });
-        await axios.put(`https://devbindaladmin.fruitnasta.com/api/products/update/${values.newProductSerialNumber}`, { status: 'Allocated' });
+        await axios.put(`https://api.bindaladmin.com/api/products/update/${selectedServiceRequest.productSerialNumber}`, { status: 'Discontinued' });
+        await axios.put(`https://api.bindaladmin.com/api/products/update/${values.newProductSerialNumber}`, { status: 'Allocated' });
       }
 
       refreshServiceRequests(); // Refresh the service request list

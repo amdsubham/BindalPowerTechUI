@@ -10,7 +10,7 @@ import MDButton from "components/MDButton"; // Adjust the import path as necessa
 import FormField from "layouts/pages/users/new-user/components/FormField";
 import AutocompleteFormField from 'components/AutocompleteFormField';
 
-const baseURL = 'https://devbindaladmin.fruitnasta.com/api'; // Adjust this as necessary
+const baseURL = 'https://api.bindaladmin.com/api'; // Adjust this as necessary
 
 // Validation schema for the form
 const validationSchema = Yup.object({
@@ -18,6 +18,7 @@ const validationSchema = Yup.object({
   modelNumber: Yup.string().required('Model Number is required'),
   segment: Yup.string().required('Segment is required'),
   price: Yup.string(),
+  warrantyPeriod: Yup.number().required('Warranty Period is required'),
   description: Yup.string().required('Description is required'),
 });
 
@@ -48,8 +49,8 @@ const VariantModal = ({ open, onClose, mode, variantId, refreshVariants }) => {
     if (mode === 'edit' && variantId) {
       axios.get(`${baseURL}/variants/${variantId}`)
         .then(response => {
-          const { name, modelNumber, segment, price, description } = response.data;
-          setInitialValues({ name, modelNumber, segment: segment._id, price, description });
+          const { name, modelNumber, segment, price, description, warrantyPeriod } = response.data;
+          setInitialValues({ name, modelNumber, segment: segment._id, price, description, warrantyPeriod });
         })
         .catch(error => console.error('Failed to fetch variant details:', error));
     } else {
@@ -59,6 +60,7 @@ const VariantModal = ({ open, onClose, mode, variantId, refreshVariants }) => {
         segment: '',
         price: '',
         description: '',
+        warrantyPeriod: 12,
       });
     }
   }, [mode, variantId]); // Update initialValues when mode or variantId changes
@@ -102,7 +104,9 @@ const VariantModal = ({ open, onClose, mode, variantId, refreshVariants }) => {
                       <Grid item xs={12}><FormField name="modelNumber" label="Model Number" /></Grid>
                       <Grid item xs={12}><AutocompleteFormField name="segment" options={segments} /></Grid>
                       <Grid item xs={12}><FormField name="price" label="Price" /></Grid>
+                      <Grid item xs={12}><FormField name="warrantyPeriod" label="Warranty Period (in Months)" /></Grid>
                       <Grid item xs={12}><FormField name="description" label="Description" multiline rows={4} /></Grid>
+
                     </Grid>
                     <MDBox mt={3} display="flex" justifyContent="flex-end">
                       <MDButton type="submit" variant="gradient" color="info" disabled={isSubmitting}>

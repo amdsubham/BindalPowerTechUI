@@ -37,7 +37,7 @@ function Illustration() {
     setIsLoading(true); // Start loading
 
     try {
-      const response = await fetch('https://devbindaladmin.fruitnasta.com/api/auth/admin/login', {
+      const response = await fetch('https://api.bindaladmin.com/api/auth/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -51,7 +51,7 @@ const AdminModal = ({ open, onClose, mode, adminId, refreshAdmins }) => {
     if (mode !== 'add' && adminId) {
       setIsLoading(true);
       // Fetch admin details for 'edit' or 'resetPassword' mode
-      axios.get(`https://devbindaladmin.fruitnasta.com/api/admins/${adminId}`)
+      axios.get(`https://api.bindaladmin.com/api/admins/${adminId}`)
         .then((response) => {
           const { name, email } = response.data;
           const [firstName, lastName] = name.split(' '); // Assuming name is "firstName lastName"
@@ -78,9 +78,9 @@ const AdminModal = ({ open, onClose, mode, adminId, refreshAdmins }) => {
 
     let apiCall;
     if (mode === 'add') {
-      apiCall = axios.post('https://devbindaladmin.fruitnasta.com/api/admins/register', payload);
+      apiCall = axios.post('https://api.bindaladmin.com/api/admins/register', payload);
     } else if (mode === 'edit' || mode === 'resetPassword') {
-      apiCall = axios.put(`https://devbindaladmin.fruitnasta.com/api/admins/${adminId}`, payload);
+      apiCall = axios.put(`https://api.bindaladmin.com/api/admins/${adminId}`, payload);
     }
 
     apiCall.then(() => {

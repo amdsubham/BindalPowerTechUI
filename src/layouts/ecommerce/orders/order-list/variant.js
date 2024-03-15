@@ -28,7 +28,7 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
-const baseURL = 'https://devbindaladmin.fruitnasta.com/api'; // Adjust this as necessary
+const baseURL = 'https://api.bindaladmin.com/api'; // Adjust this as necessary
 
 function VariantList() {
   const [variants, setVariants] = useState([]);

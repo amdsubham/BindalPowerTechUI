@@ -17,7 +17,7 @@ function CustomerList({ match }) {
   const fetchCustomers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`https://devbindaladmin.fruitnasta.com/api/customers/${dealerId}/dealer`);
+      const response = await axios.get(`https://api.bindaladmin.com/api/customers/${dealerId}/dealer`);
       setCustomers(response.data);
     } catch (error) {
       console.error("Failed to fetch customers:", error);

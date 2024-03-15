@@ -42,7 +42,7 @@ function NewUser() {
   useEffect(() => {
     if (adminId) {
       setIsLoading(true);
-      axios.get(`https://devbindaladmin.fruitnasta.com/api/admins/${adminId}`)
+      axios.get(`https://api.bindaladmin.com/api/admins/${adminId}`)
         .then(response => {
           const { name, email, company } = response.data; // Assuming these fields are returned by your API
           // Splitting name into first and last names might require adjustment based on your data structure
@@ -61,7 +61,7 @@ function NewUser() {
   }, [adminId]);
 
   const handleSubmit = (values, { setSubmitting }) => {
-    const url = adminId ? `https://devbindaladmin.fruitnasta.com/api/admins/${adminId}` : 'https://devbindaladmin.fruitnasta.com/api/admins';
+    const url = adminId ? `https://api.bindaladmin.com/api/admins/${adminId}` : 'https://api.bindaladmin.com/api/admins';
     const method = adminId ? axios.put : axios.post;
 
     setIsLoading(true);

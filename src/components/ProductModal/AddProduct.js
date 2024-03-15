@@ -7,7 +7,7 @@ import { BrowserBarcodeReader } from '@zxing/library';
 import ScannerIcon from '@mui/icons-material/Scanner'; // Import icon for scanner
 
 const AddProduct = () => {
-    const apiURL = 'https://devbindaladmin.fruitnasta.com/api/products';
+    const apiURL = 'https://api.bindaladmin.com/api/products';
 
     const [scannerActive, setScannerActive] = useState(false);
     const [matchingVariant, setMatchingVariant] = useState(null); // Initialize with null
@@ -25,9 +25,9 @@ const AddProduct = () => {
     useEffect(() => {
         const fetchVariantsAndSegments = async () => {
             try {
-                const variantsResponse = await axios.get('https://devbindaladmin.fruitnasta.com/api/variants');
+                const variantsResponse = await axios.get('https://api.bindaladmin.com/api/variants');
                 setVariants(variantsResponse.data);
-                const segmentsResponse = await axios.get('https://devbindaladmin.fruitnasta.com/api/segments');
+                const segmentsResponse = await axios.get('https://api.bindaladmin.com/api/segments');
                 setSegments(segmentsResponse.data);
             } catch (error) {
                 console.error('Error fetching variants and segments:', error);

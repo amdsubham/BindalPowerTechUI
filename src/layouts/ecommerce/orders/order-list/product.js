@@ -13,9 +13,9 @@ import Footer from "examples/Footer"; // Adjust path as needed
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const baseURL = "https://devbindaladmin.fruitnasta.com/api/products";
-const variantsURL = "https://devbindaladmin.fruitnasta.com/api/variants"; // Assuming you have a similar endpoint for variants
-const segmentsURL = "https://devbindaladmin.fruitnasta.com/api/segments";
+const baseURL = "https://api.bindaladmin.com/api/products";
+const variantsURL = "https://api.bindaladmin.com/api/variants"; // Assuming you have a similar endpoint for variants
+const segmentsURL = "https://api.bindaladmin.com/api/segments";
 
 function ProductList() {
   const [products, setProducts] = useState([]);

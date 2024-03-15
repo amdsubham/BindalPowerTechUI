@@ -19,7 +19,7 @@ function DealerList() {
   const fetchDealers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`https://devbindaladmin.fruitnasta.com/api/dealers/${distributorId}/dealers`);
+      const response = await axios.get(`https://api.bindaladmin.com/api/dealers/${distributorId}/dealers`);
       setDealers(response.data);
     } catch (error) {
       console.error("Failed to fetch dealers:", error);

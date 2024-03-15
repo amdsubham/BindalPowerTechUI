@@ -17,7 +17,7 @@ const ProductModal = ({ open, onClose, product, refreshProducts, variants, segme
     const formikRef = useRef();
 
     // API endpoint URL
-    const apiURL = product ? `https://devbindaladmin.fruitnasta.com/api/products/${product._id}` : 'https://devbindaladmin.fruitnasta.com/api/products';
+    const apiURL = product ? `https://api.bindaladmin.com/api/products/${product._id}` : 'https://api.bindaladmin.com/api/products';
 
     const initialValues = {
         modelNumber: '',

@@ -28,7 +28,7 @@ const DistributorModal = ({ open, onClose, mode, distributorId, refreshDistribut
   useEffect(() => {
     if (mode !== 'add' && distributorId) {
       setIsLoading(true);
-      axios.get(`https://devbindaladmin.fruitnasta.com/api/distributors/${distributorId}`)
+      axios.get(`https://api.bindaladmin.com/api/distributors/${distributorId}`)
         .then((response) => {
           const { name, email, contactNumber, address, loginCredentials } = response.data;
           setInitialValues({
@@ -58,9 +58,9 @@ const DistributorModal = ({ open, onClose, mode, distributorId, refreshDistribut
 
     let apiCall;
     if (mode === 'add') {
-      apiCall = axios.post('https://devbindaladmin.fruitnasta.com/api/distributors', payload);
+      apiCall = axios.post('https://api.bindaladmin.com/api/distributors', payload);
     } else if (mode === 'edit') {
-      apiCall = axios.put(`https://devbindaladmin.fruitnasta.com/api/distributors/${distributorId}`, payload);
+      apiCall = axios.put(`https://api.bindaladmin.com/api/distributors/${distributorId}`, payload);
     }
 
     apiCall.then(() => {

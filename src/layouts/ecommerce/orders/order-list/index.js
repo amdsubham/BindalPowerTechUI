@@ -41,7 +41,7 @@ function OrderList() {
   const fetchAdmins = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://devbindaladmin.fruitnasta.com/api/admins');
+      const response = await axios.get('https://api.bindaladmin.com/api/admins');
       setAdmins(response.data);
     } catch (error) {
       console.error("Failed to fetch admins:", error);
@@ -99,7 +99,7 @@ function OrderList() {
   const handleDeleteAdmin = () => {
     if (selectedAdmin && selectedAdmin._id) {
       setIsLoading(true);
-      axios.delete(`https://devbindaladmin.fruitnasta.com/api/admins/${selectedAdmin._id}`)
+      axios.delete(`https://api.bindaladmin.com/api/admins/${selectedAdmin._id}`)
         .then(() => {
           setDeleteDialogOpen(false);
           fetchAdmins();
