@@ -22,6 +22,7 @@ import DataTable from "examples/Tables/DataTable";
 import OrderModal from "components/OrderModal"; // Make sure this modal is adapted for orders
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
 function OrderList() {
   const [orders, setOrders] = useState([]);
@@ -153,9 +154,6 @@ function OrderList() {
   };
 
 
-
-
-
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -164,10 +162,12 @@ function OrderList() {
           {/* <IconButton onClick={() => fetchOrders()} color="info">
             <RefreshIcon />
           </IconButton> */}
-          <MDButton variant="gradient" color="info" sx={{ height: "fit-content" }}
-            onClick={() => openModal('add', null)}>
-            Add Order
-          </MDButton>
+          <Link to={`/dashboards/addorder`} >
+            <MDButton variant="gradient" color="info" sx={{ height: "fit-content" }}
+              onClick={() => openModal('add', null)}>
+              Add Order
+            </MDButton>
+          </Link>
         </MDBox>
 
         <Card>

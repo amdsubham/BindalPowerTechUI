@@ -67,6 +67,7 @@ import CustomerList from "layouts/ecommerce/orders/order-list/customer";
 import ServiceRequestList from "layouts/ecommerce/orders/order-list/serviceRequest";
 import OrderList from "layouts/ecommerce/orders/order-list/order";
 import AddProduct from "components/ProductModal/AddProduct";
+import AddOrder from "components/OrderModal/AddOrder";
 import OrderDetails from "layouts/ecommerce/orders/order-details";
 import SignInBasic from "layouts/authentication/sign-in/basic";
 import SignInCover from "layouts/authentication/sign-in/cover";
@@ -159,6 +160,12 @@ const routes = [
         key: "managedistributor",
         route: "/dashboards/managedistributor",
         component: <DistributorList />,
+      },
+      {
+        name: "Add Order",
+        key: "addorder",
+        route: "/dashboards/addorder",
+        component: <AddOrder />,
       },
       {
         name: "Order List",
